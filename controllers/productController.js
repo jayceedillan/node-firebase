@@ -18,6 +18,7 @@ const db = getFirestore(firebase);
 export const createProduct = async (req, res, next) => {
   try {
     const data = req.body;
+    console.log(data);
     await addDoc(collection(db, 'products'), data);
     res.status(200).send('product created successfully');
   } catch (error) {
@@ -58,6 +59,7 @@ export const getProducts = async (req, res, next) => {
 export const getProduct = async (req, res, next) => {
   try {
     const id = req.params.id;
+    console.log(req.params.id);
     const product = doc(db, 'products', id);
     const data = await getDoc(product);
     if (data.exists()) {
